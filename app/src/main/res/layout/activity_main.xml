@@ -14,21 +14,32 @@
         android:layout_height="match_parent"
         android:orientation="vertical">
 
-        <EditText
-            android:id="@+id/searchField"
-            android:layout_width="wrap_content"
+        <LinearLayout
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:inputType="text"
-            android:imeOptions="actionSearch"
-            android:hint=" enter what you want to search"
-            android:onTextChanged="@{(text, start, before, count) -> vm.onQueryChange(text)}" />
+            android:orientation="horizontal"
+            android:weightSum="18">
+            <EditText
+                android:layout_weight="17"
+                android:id="@+id/searchField"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:inputType="text"
+                android:imeOptions="actionSearch"
+                android:hint="Type Repository Name"
+                android:onTextChanged="@{(text, start, before, count) -> vm.onQueryChange(text)}" />
 
-        <Button
-            android:id="@+id/btn"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:onClick="@{() -> vm.doSearch()}"
-            android:text="GET DATA" />
+            <ImageView
+                android:layout_weight="1"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:onClick="@{() -> vm.doSearch()}"
+                android:layout_gravity="center_vertical"
+                android:src="@drawable/ic_search"/>
+
+
+        </LinearLayout>
+
 
 
 
