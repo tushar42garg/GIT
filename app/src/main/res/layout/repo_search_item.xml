@@ -12,11 +12,8 @@
             type="com.example.git.ui.search.SearchViewModel" />
     </data>
 
-    <androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content">
 
-        <LinearLayout
+        <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_margin="10dp"
@@ -45,18 +42,16 @@
                     android:id="@+id/linkProject"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="PROJECT LINK" />
+                    android:text="@{item.url}" />
 
                 <TextView
                     android:id="@+id/watcherCount"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="WATCHERS COUNT" />
+                    android:text="@{item.watchersCount" />
 
 
             </LinearLayout>
         </LinearLayout>
 
-
-    </androidx.cardview.widget.CardView>
 </layout>

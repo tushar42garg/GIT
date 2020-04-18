@@ -30,20 +30,26 @@
             android:onClick="@{() -> vm.doSearch()}"
             android:text="GET DATA" />
 
-        <androidx.recyclerview.widget.RecyclerView
-            android:id="@+id/rv_home"
-            android:layout_width="wrap_content"
+
+
+        <androidx.swiperefreshlayout.widget.SwipeRefreshLayout
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            app:viewModel="@{vm}"
-            app:repositories="@{vm.items}" />
+            app:refreshing="@{safeUnbox(vm.refreshing)}"
+            app:layout_constraintTop_toBottomOf="@+id/search_edit"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent">
 
-        <ProgressBar
-            android:id="@+id/progress_bar_main"
-            android:layout_width="wrap_content"
-            android:layout_height="match_parent"
-            android:layout_gravity="center"
-            android:visibility="gone" />
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/rv_home"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                app:viewModel="@{vm}"
+                app:repositories="@{vm.items}" />
 
+
+        </androidx.swiperefreshlayout.widget.SwipeRefreshLayout>
 
     </LinearLayout>
 </layout>

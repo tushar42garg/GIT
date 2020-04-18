@@ -12,7 +12,7 @@ import com.example.git.extension.with
 
 class SearchViewModel(private val api: SearchAPI) : BaseViewModel() {
     private var query: String = ""
-        get() = if (field.isEmpty()) "nspiria" else field
+        get() = if (field.isEmpty()) "nsp" else field
 
     private val _refreshing: NotNullMutableLiveData<Boolean> = NotNullMutableLiveData(false)
     val refreshing: NotNullMutableLiveData<Boolean>
@@ -29,6 +29,9 @@ class SearchViewModel(private val api: SearchAPI) : BaseViewModel() {
         }
 
         addToDisposable(api.search(params).with()
+            .doOnSubscribe { _refreshing.value = true }
+            .doOnSuccess { _refreshing.value = false }
+            .doOnError { _refreshing.value = false }
             .subscribe({
                 _items.value = it.repositories
             }, {
