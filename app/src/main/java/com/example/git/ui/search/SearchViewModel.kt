@@ -54,7 +54,7 @@ class SearchViewModel(private val api: SearchAPI) : BaseViewModel() {
         val context: Context = view.context
         val intent = Intent(context, RepoActivity::class.java)
         intent.putExtra("name", item.fullName)
-        intent.putExtra("link", item.url)
+        intent.putExtra("link", item.gitURL)
         intent.putExtra("description", item.description)
         intent.putExtra("image_url", item.owner.avatarUrl)
         context.startActivity(intent)

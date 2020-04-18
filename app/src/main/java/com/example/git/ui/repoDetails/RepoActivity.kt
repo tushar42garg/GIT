@@ -21,6 +21,10 @@ class RepoActivity : BindingActivity<ActivityRepoDetailsBinding>(){
         repoLink.text = intent.getStringExtra("link")
         repoDescription.text= intent.getStringExtra("description")
         GlideBindingAdapter.setRoundMediaResource(repoImage, intent.getStringExtra("image_url"))
+
+        repoLink.setOnClickListener {
+
+        }
     }
 
 }
