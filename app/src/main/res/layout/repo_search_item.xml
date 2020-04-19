@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<layout>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
 
     <data>
 
@@ -13,45 +14,64 @@
     </data>
 
 
-        <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    <androidx.cardview.widget.CardView
+        android:layout_margin="10dp"
+        android:elevation="7dp"
+        app:cardCornerRadius="4dp"
+        android:onClick="@{(v) -> vm.showDetails(item, v)}"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="10dp">
+        <RelativeLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_margin="10dp"
-            android:orientation="horizontal">
+            android:layout_height="match_parent">
 
             <ImageView
-                android:id="@+id/imageProject"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:src="@mipmap/ic_launcher" />
+                android:id="@+id/img_repo_item"
+                android:layout_width="100dp"
+                android:layout_height="100dp"
+                android:padding="10dp"
+                app:roundMediaUrl="@{item.owner.avatarUrl}"
+                android:layout_gravity="center_vertical"
+                />
 
             <LinearLayout
+                android:layout_toEndOf="@+id/img_repo_item"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_gravity="center_vertical"
-                android:layout_marginLeft="20dp"
+                android:layout_marginHorizontal="10dp"
+                android:layout_marginVertical="15dp"
                 android:orientation="vertical">
 
                 <TextView
-                    android:id="@+id/titleProject"
+                    android:maxLines="1"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="@{item.name}" />
 
                 <TextView
                     android:id="@+id/linkProject"
+                    android:maxLines="1"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="@{item.fullName}" />
-
-                <TextView
-                    android:id="@+id/watcherCount"
+                <LinearLayout
+                    android:orientation="horizontal"
                     android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="@{item.watchersCount" />
+                    android:layout_height="wrap_content">
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Watcher's count: "/>
 
+                    <TextView
+                        android:id="@+id/watcherCount"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@{Integer.toString(item.watchersCount)}" />
+                </LinearLayout>
 
-            </LinearLayout>
-        </LinearLayout>
+            </LinearLayout></RelativeLayout>
+    </androidx.cardview.widget.CardView>
 
 </layout>
